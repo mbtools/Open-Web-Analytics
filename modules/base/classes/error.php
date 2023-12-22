@@ -350,7 +350,13 @@ class owa_error {
 	    error_reporting( -1 );
         ini_set('display_errors', 'On');
         ini_set("log_errors", 1);
-        ini_set("error_log", owa_coreAPI::getSetting('base', 'error_log_file') );
+        // configuration might not be loaded yet (i.e. during install)
+        // but we want to log errors anyway
+        try {
+            ini_set("error_log", owa_coreAPI::getSetting('base', 'error_log_file') );
+        } catch (Throwable $e) {
+            ini_set("error_log", OWA_DATA_DIR . 'logs/errors.log' );
+        }
     }
 
     /**
