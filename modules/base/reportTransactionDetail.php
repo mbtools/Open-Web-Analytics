@@ -49,7 +49,7 @@ class owa_reportTransactionDetailController extends owa_reportController {
 		$trans_detail = (array) $trans_detail;
         $this->set('trans_detail', $trans_detail);
         $this->setSubview('base.reportTransactionDetail');
-        $this->setTitle('Transaction Detail for: ', $transaction_id);
+        $this->setTitle('Transaction Detail for: ', $transactionId);
     }
 
 }

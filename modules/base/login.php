@@ -61,7 +61,7 @@ class owa_loginController extends owa_controller {
         }
     }
 
-    function errorAction() {
+    function errorAction($go) {
 
         // return login form with error msg
         $this->setView('base.loginForm');

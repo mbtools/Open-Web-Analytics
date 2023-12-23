@@ -32,6 +32,8 @@
  
 class owa_factTable extends owa_entity {
      
+    var $columns = array();
+
      function __construct() {
          
          $columns = array();
@@ -119,9 +121,18 @@ class owa_factTable extends owa_entity {
             $cvar_value_col = 'cv'.$i.'_value';
             $columns[$cvar_value_col] = new owa_dbColumn( $cvar_value_col, OWA_DTD_VARCHAR255 );
         }
-        
-        return $columns;
+
+        $this->setFactColumns( $columns );
      }
+
+     public function getFactColumns() {
+         return $this->columns;
+     }
+     
+     public function setFactColumns( $columns ) {
+         $this->columns = $columns;
+     }
+
  }
 
 ?>

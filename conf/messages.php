@@ -44,7 +44,7 @@ $_owa_messages = [
     2502 => ['headline' => 'Success', 'message' => 'The module was deactivated successfully.'],
     2503 => ['headline' => 'Success', 'message' => 'Options reset to Default Values.'],
     2504 => ['headline' => 'Success', 'message' => 'Entity %s Schema Created.'],
-    2504 => ['headline' => 'Success', 'message' => 'Goal Saved.'],
+    2505 => ['headline' => 'Success', 'message' => 'Goal Saved.'],
 
 
     //User managment
@@ -71,7 +71,7 @@ $_owa_messages = [
     3206 => ['headline' => 'Error', 'message' => 'A site with that domain already exists.'],
     3207 => ['headline' => 'Error', 'message' => 'You must enter a domain when adding a web site.'],
     3208 => ['headline' => 'Error', 'message' => 'That site does not exist.'],
-    3208 => ['headline' => 'Error', 'message' => 'Please remove the http:// from your beginning of your domain.'],
+    3209 => ['headline' => 'Error', 'message' => 'Please remove the http:// from your beginning of your domain.'],
 
 
     //install
@@ -86,8 +86,8 @@ $_owa_messages = [
     3308 => ['headline' => 'Success', 'message' => 'Updates were applied.'],
     3309 => ['headline' => 'Error', 'message' => 'Site Domain is required.'],
     3310 => ['headline' => 'Error', 'message' => 'E-mail Address is required.'],
-    3310 => ['headline' => 'Error', 'message' => 'Password is required.'],
-    3311 => ['headline' => 'Error', 'message' => 'These updates must be applied using the command line interface (CLI). Run <code>\'/path/to/php cli.php cmd=update\'</code> from your server\'s command shell to apply these updates. For more information on updating see the install/update page on the wiki.'],
+    3311 => ['headline' => 'Error', 'message' => 'Password is required.'],
+    3312 => ['headline' => 'Error', 'message' => 'These updates must be applied using the command line interface (CLI). Run <code>\'/path/to/php cli.php cmd=update\'</code> from your server\'s command shell to apply these updates. For more information on updating see the install/update page on the wiki.'],
 
     // Graph related
     3500 => ['headline' => 'Error', 'message' => 'There is no data for\nthis time period.'],

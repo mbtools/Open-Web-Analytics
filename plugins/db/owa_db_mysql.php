@@ -242,7 +242,7 @@ class owa_db_mysql extends owa_db {
         //$this->result = array();
 
         if (!$this->new_result) {
-            return null;
+            return [];
         }
 
         while ( $row = mysqli_fetch_assoc( $this->new_result ) ) {
@@ -257,7 +257,7 @@ class owa_db_mysql extends owa_db {
 
         } else {
 
-            return null;
+            return [];
         }
     }
 
@@ -298,7 +298,7 @@ class owa_db_mysql extends owa_db {
 
     function getAffectedRows() {
 
-        return mysqli_affected_rows();
+        return mysqli_affected_rows($this->connection);
     }
 }
 

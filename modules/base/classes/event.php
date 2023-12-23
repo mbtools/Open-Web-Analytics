@@ -285,7 +285,7 @@ class owa_event {
     /**
      * Create guid from process id
      *
-     * @return    integer
+     * @return    string
      * @access     private
      */
     function set_guid() {

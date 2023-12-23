@@ -68,7 +68,7 @@ abstract class owa_module {
     /**
      * URL for author of module
      *
-     * @var unknown_type
+     * @var string
      */
     var $author_url;
 
@@ -84,7 +84,7 @@ abstract class owa_module {
     /**
      * name used in display situations
      *
-     * @var unknown_type
+     * @var string
      */
     var $display_name;
 
@@ -105,14 +105,14 @@ abstract class owa_module {
     /**
      * Array of navigation links that this module implements
      *
-     * @var unknown_type
+     * @var array
      */
     var $nav_links;
 
     /**
      * Array of metric names that this module implements
      *
-     * @var unknown_type
+     * @var array
      */
     var $metrics;
 
@@ -142,7 +142,7 @@ abstract class owa_module {
     /**
      * Required Schema Version
      *
-     * @var array
+     * @var string
      */
     var $required_schema_version;
 
@@ -317,15 +317,14 @@ abstract class owa_module {
      */
     function _registerEventHandlers() {
 
-        return;
+        return [];
     }
 
     /**
      * Attaches an event handler to the event queue
      *
-     * @param array $event_name
-     * @param string $handler_name
-     * @return boolean
+     * @param mixed $event_name
+     * @param mixed $handler_name
      */
     function registerEventHandler($event_name, $handler_name, $method = 'notify', $dir = 'handlers') {
 
@@ -343,8 +342,7 @@ abstract class owa_module {
      * Hooks a function to a filter
      *
      * @param array $event_name
-     * @param string $handler_name
-     * @return boolean
+     * @param mixed $handler_name
      */
     function registerFilter($filter_name, $handler_name, $method = '', $priority = 10, $dir = 'filters') {
 
@@ -377,7 +375,6 @@ abstract class owa_module {
      *
      * @param array $event_name
      * @param string $handler_name
-     * @return boolean
      * @depricated
      */
     function _addHandler($event_name, $handler_name) {
@@ -394,7 +391,7 @@ abstract class owa_module {
      */
     function registerAdminPanels() {
 
-        return;
+        return [];
     }
 
     /**
@@ -647,10 +644,8 @@ abstract class owa_module {
      */
     function activate() {
 	
-		$ret = owa_coreAPI::persistSetting( $this->name, 'is_active', true );
+		owa_coreAPI::persistSetting( $this->name, 'is_active', true );
         owa_coreAPI::notice("Module $this->name activated");
-        
-        return $ret;
     }
 
     /**
@@ -1144,12 +1139,12 @@ abstract class owa_module {
 
         if (! isset( $package['name'] ) ) {
 
-            throw exception('Build Package does not have a name.');
+            throw new Exception('Build Package does not have a name.');
         }
 
         if (! isset( $package['output_dir'] ) ) {
 
-            throw exception('Build Package does not have an output directory.');
+            throw new Exception('Build Package does not have an output directory.');
         } else {
             //check for trailing slash
             $check = substr($package['output_dir'], -1, 1);
@@ -1160,7 +1155,7 @@ abstract class owa_module {
 
         if (! isset( $package['files'] ) ) {
 
-            throw exception('Build Package does not any files.');
+            throw new Exception('Build Package does not any files.');
         }
 
         // filter the pcakge in case other modules want to change something.

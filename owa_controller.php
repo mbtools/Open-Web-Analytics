@@ -61,14 +61,14 @@ class owa_controller extends owa_base {
     /**
      * data validation control object
      *
-     * @var Object
+     * @var object
      */
     var $v;
 
     /**
      * Data container
      *
-     * @var Array
+     * @var array
      */
     var $data = array();
 
@@ -82,28 +82,28 @@ class owa_controller extends owa_base {
     /**
      * Available Views
      *
-     * @var Array
+     * @var array
      */
     var $available_views = array();
 
     /**
      * Time period
      *
-     * @var Object
+     * @var object
      */
     var $period;
 
     /**
      * Dom id
      *
-     * @var String
+     * @var string
      */
     var $dom_id;
 
     /**
      * Flag for requiring authenciation before performing actions
      *
-     * @var Bool
+     * @var bool
      */
     var $authenticate_user;
 
@@ -112,7 +112,7 @@ class owa_controller extends owa_base {
     /**
      * Flag for requiring nonce before performing write actions
      *
-     * @var Bool
+     * @var bool
      */
     var $is_nonce_required = false;
 
@@ -120,6 +120,7 @@ class owa_controller extends owa_base {
      * Constructor
      *
      * @param array $params
+     * @return owa_controller
      */
     function __construct($params) {
 
@@ -603,7 +604,8 @@ class owa_controller extends owa_base {
     /**
      * redirects borwser to a particular view
      *
-     * @param unknown_type $data
+     * @param string $action
+     * @param boolean $pass_params
      */
     function redirectBrowser($action, $pass_params = true) {
 

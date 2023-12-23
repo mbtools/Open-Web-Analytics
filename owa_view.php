@@ -64,7 +64,7 @@ class owa_view extends owa_base {
     /**
      * CSS file for main template
      *
-     * @var unknown_type
+     * @var string
      */
     var $css_file;
 
@@ -78,14 +78,14 @@ class owa_view extends owa_base {
     /**
      * Type of page
      *
-     * @var unknown_type
+     * @var string
      */
     var $page_type;
 
     /**
      * Request Params
      *
-     * @var unknown_type
+     * @var array
      */
     var $params;
 
@@ -129,8 +129,8 @@ class owa_view extends owa_base {
     /**
      * Assembles the view using passed model objects
      *
-     * @param unknown_type $data
-     * @return unknown
+     * @param array $data
+     * @return mixed
      */
     function assembleView($data) {
 
@@ -355,8 +355,8 @@ class owa_view extends owa_base {
     /**
      * Assembles the view using passed model objects
      *
-     * @param unknown_type $data
-     * @return unknown
+     * @param mixed $data
+     * @return string
      */
     function assembleSubView($data) {
 
@@ -731,8 +731,8 @@ class owa_adminView extends owa_view {
     }
 
     function post() {
-        $this->setJs('owa.css');
-        $this->setJs('owa.admin.css');
+        $this->setJs('owa.css',''); //correct path?
+        $this->setJs('owa.admin.css','');
     }
 }
 

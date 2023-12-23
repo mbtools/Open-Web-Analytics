@@ -39,7 +39,7 @@ class owa_commerce_transaction_fact extends owa_factTable {
         $this->setTableName('commerce_transaction_fact');
 
         // set common fact table columns
-        $parent_columns = parent::__construct();
+        $parent_columns = parent::__construct()->getColumns();
 
         foreach ($parent_columns as $pcolumn) {
 

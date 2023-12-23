@@ -100,10 +100,7 @@
 
         $file = $this->get('base', 'config_file');
         
-        if ( file_exists( $file ) ) {
-            
-            return true;
-        }
+        return file_exists( $file );
      }
      
      public function isConfigFileLoaded() {
@@ -406,9 +403,9 @@
       *
       * @param string $module the name of the module
       * @param string $key the configuration key
-      * @return unknown
+      * @return mixed
       */
-     function get($module, $key) {
+     function get($module, $key = '') {
         
         if ( $this->config ) {
             
@@ -436,7 +433,7 @@
       * @param string $value the configuration value
       * @return boolean
       */
-     function set($module, $key, $value) {
+     function set($module, $key, $value = '') {
         
         if ( $this->config ) {
             
@@ -457,6 +454,7 @@
         
             $this->default_config = $values;
         }
+        return true;
      }
 
 
@@ -884,7 +882,7 @@
     /**
      * sets and checks the cookie domain setting
      *
-     * @param unknown_type $domain
+     * @param string $domain
      */
     public function setCookieDomain ($domain = '') {
 

@@ -42,6 +42,7 @@ class owa_latestDomstreams extends owa_metric {
 
     function calculate() {
 
+        // TODO: setLabel not called correctly
         $this->db->selectFrom('owa_domstream');
         $this->db->selectColumn("id, timestamp, page_url, duration");
         $this->db->selectColumn($this->setLabel('id', 'Domstream ID'));

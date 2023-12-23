@@ -47,7 +47,7 @@ class owa_chartData {
     function setSeries($name, $data, $label = '') {
 
         $this->series_data[$name] = $data;
-        $this->series_label[$name] = $label;
+        $this->series_labels[$name] = $label;
         return;
     }
 
@@ -63,8 +63,8 @@ class owa_chartData {
 
     function getSeriesLabel($name) {
 
-        if (array_key_exists($name, $this->series_label)) {
-            return $this->series_label[$name];
+        if (array_key_exists($name, $this->series_labels)) {
+            return $this->series_labels[$name];
         } else {
             return false;
         }

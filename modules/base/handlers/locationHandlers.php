@@ -38,7 +38,7 @@ class owa_locationHandlers extends owa_observer {
     /**
      * Notify Event Handler
      *
-     * @param     unknown_type $event
+     * @param     object $event
      * @access     public
      */
     function notify($event) {

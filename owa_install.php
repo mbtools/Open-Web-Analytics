@@ -55,9 +55,16 @@ class owa_install extends owa_base{
     /**
      * Module name
      *
-     * @var unknown_type
+     * @var string
      */
     var $module;
+
+    /**
+     * Tables array
+     *
+     * @var array
+     */
+    var $tables;
 
     /**
      * Constructor
@@ -74,7 +81,7 @@ class owa_install extends owa_base{
     /**
      * Check to see if schema is installed
      *
-     * @return boolean
+     * @return mixed
      */
     function checkForSchema() {
 

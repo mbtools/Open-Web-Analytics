@@ -38,7 +38,7 @@ class owa_request extends owa_factTable {
         $this->setSummaryLevel(0);
         
         // set common fact table columns
-        $parent_columns = parent::__construct();
+        $parent_columns = parent::__construct()->getColumns();
         
         foreach ($parent_columns as $pcolumn) {
                 

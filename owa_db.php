@@ -99,14 +99,14 @@ class owa_db extends owa_base {
     /**
      * Microtime Start of Query
      *
-     * @var unknown_type
+     * @var string
      */
     var $_start_time;
 
     /**
      * Total Elapsed time of query
      *
-     * @var unknown_type
+     * @var string
      */
     var $_total_time;
 
@@ -923,16 +923,12 @@ class owa_db extends owa_base {
 
                 case "single_array":
                     return $results[0];
-                    break;
                 case "single_row":
                     return $results[0];
-                    break;
                 case "inverted_array":
                     return owa_lib::deconstruct_assoc($results);
-                    break;
                 default:
                     return $results;
-                    break;
         }
 
     }

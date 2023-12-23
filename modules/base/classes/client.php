@@ -298,10 +298,10 @@ class owa_client extends owa_caller {
     /**
      * Set a custom variable
      *
-     * @param    slot    int        the identifying number for the custom variable. 1-5.
-     * @param    name    string    the key of the custom variable.
-     * @param    value    string    the value of the variable
-     * @param    scope    string    the scope of the variable. can be page, session, or visitor
+     * @param integer $slot      the identifying number for the custom variable. 1-5.
+     * @param string  $name      the key of the custom variable.
+     * @param string  $value     the value of the variable
+     * @param string  $scope     the scope of the variable. can be page, session, or visitor
      */
     public function setCustomVar( $slot, $name, $value, $scope = '' ) {
 

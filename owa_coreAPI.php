@@ -243,12 +243,12 @@ class owa_coreAPI {
 
     public static function getAllRoles() {
 
-        $caps = owa_coreAPI::getSetting('base', 'capabilities');
+        $caps = array(owa_coreAPI::getSetting('base', 'capabilities'));
         return array_keys($caps);
     }
 
     public static function getCapabilities($role) {
-        $caps = owa_coreAPI::getSetting('base', 'capabilities');
+        $caps = array(owa_coreAPI::getSetting('base', 'capabilities'));
         if (array_key_exists($role, $caps)) {
             return $caps[$role];
         } else {
@@ -434,7 +434,7 @@ class owa_coreAPI {
     /**
      * Produces Module Classes (module.php)
      *
-     * @return Object module class object
+     * @return object module class object
      */
     public static function moduleClassFactory($module) {
 
@@ -493,8 +493,8 @@ class owa_coreAPI {
     /**
      * Convienence method for generating entities
      *
-     * @param unknown_type $entity_name
-     * @return unknown
+     * @param string $entity_name
+     * @return object
      */
     public static function entityFactory($entity_name) {
 
@@ -518,7 +518,7 @@ class owa_coreAPI {
             require_once(OWA_BASE_CLASSES_DIR.'owa_entity.php');
         endif;
 
-        $entity = owa_coreAPI::moduleSpecificFactory($entity_name, 'entities', '', '', false);
+        $entity = owa_coreAPI::moduleSpecificFactory($entity_name, 'entities', '', [], false);
         $entity->name = $entity_name;
         return $entity;
         //return owa_coreAPI::supportClassFactory('base', 'entityManager', $entity_name);
@@ -528,8 +528,8 @@ class owa_coreAPI {
     /**
      * Convienence method for generating entities
      *
-     * @param unknown_type $entity_name
-     * @return unknown
+     * @param string $entity_name
+     * @return object
      * @depricated
      * @todo REMOVE
      */
@@ -546,9 +546,9 @@ class owa_coreAPI {
      * @param string $class_dir
      * @param string $class_suffix
      * @param array $params
-     * @return unknown
+     * @return object
      */
-    public static function moduleSpecificFactory($modulefile, $class_dir, $class_suffix = null, $params = '', $add_module_name = true, $class_ns = 'owa_') {
+    public static function moduleSpecificFactory($modulefile, $class_dir, $class_suffix = null, $params = [], $add_module_name = true, $class_ns = 'owa_') {
 
         list($module, $file) = explode(".", $modulefile);
         $class = $class_ns.$file.$class_suffix;
@@ -623,7 +623,7 @@ class owa_coreAPI {
                 if (!empty($do['file'])) {
 
                     if (!class_exists($do['callback'][0])) {
-                        require_once($file);
+                        require_once($do['file']);
                     }
                 }
 
@@ -640,8 +640,8 @@ class owa_coreAPI {
     /**
      * Convienence method for generating metrics
      *
-     * @param unknown_type $entity_name
-     * @return unknown
+     * @param string $entity_name
+     * @return object
      */
     public static function metricFactory($metric_name, $params = array()) {
 
@@ -726,7 +726,7 @@ class owa_coreAPI {
 
             return $links[$view][$nav_name];
         else:
-            return false;
+            return [];
         endif;
 
     }
@@ -969,7 +969,7 @@ class owa_coreAPI {
                 owa_coreAPI::debug("ABORTING: request appears to be from a robot");
                 owa_coreAPI::setRequestParam('is_robot', true);
                 
-                return;
+                return false;
             }
         }
 
@@ -997,8 +997,10 @@ class owa_coreAPI {
 			owa_coreAPI::debug('About to perform action: '.$processor_action);
 			owa_coreAPI::debug($event);
 			
-			return owa_coreAPI::performAction( $processor_action, array( 'event' => $event ) );
+			owa_coreAPI::performAction( $processor_action, array( 'event' => $event ) );
         }
+
+        return true;
     }
 
     public static function getInstance( $class, $path ) {
@@ -1068,8 +1070,8 @@ class owa_coreAPI {
         if (owa_coreAPI::getSetting('base', 'clean_query_string')):
 
             if (owa_coreAPI::getSetting('base', 'query_string_filters')):
-                $filters = str_replace(' ', '', owa_coreAPI::getSetting('base', 'query_string_filters'));
-                $filters = explode(',', $filters);
+                $filter = str_replace(' ', '', strval(owa_coreAPI::getSetting('base', 'query_string_filters')));
+                $filters = explode(',', $filter);
             else:
                 $filters = array();
             endif;
@@ -1137,7 +1139,7 @@ class owa_coreAPI {
     /**
      * Factory method for producing validation objects
      *
-     * @return Object
+     * @return object
      */
     public static function validationFactory($class_file, $conf = array()) {
 
@@ -1294,7 +1296,7 @@ class owa_coreAPI {
     /**
      * Handles OWA internal page/action requests
      *
-     * @return unknown
+     * @return string
      */
     public static function handleRequest($caller_params = null, $action = '') {
 
@@ -1394,13 +1396,13 @@ class owa_coreAPI {
 				} else {
 					
 					owa_coreAPI::debug('No REST API route found');
-					return;	
+					return '';	
 				}
 
 			} else {
 				
 				owa_coreAPI::debug('Could not generate controller because no version param was on request.');
-				return;
+				return '';
 			}
 			
 		}
@@ -1559,7 +1561,7 @@ class owa_coreAPI {
         if ( ! $cached_salts ) {
 
             $cached_salts = array();
-            $ns = strtoupper( owa_coreAPI::getSetting('base', 'ns') );
+            $ns = strtoupper( strval(owa_coreAPI::getSetting('base', 'ns')) );
 
             foreach (array('NONCE', 'SECRET', 'AUTH') as $f ) {
 
@@ -1832,7 +1834,7 @@ class owa_coreAPI {
     public static function isIpAddressExcluded( $ip_address ) {
 
         // do not log if ip address is on the do not log list
-        $ips = owa_coreAPI::getSetting( 'base', 'excluded_ips' );
+        $ips = strval(owa_coreAPI::getSetting( 'base', 'excluded_ips' ));
         
         if ( $ips ) {
 	        
@@ -1896,7 +1898,7 @@ class owa_coreAPI {
     public static function registerFilter( $filter_name, $callback, $priority = 10 ) {
 
         $ed = owa_coreAPI::getEventDispatch();
-        $ed->attachFilter($filter_name, $callback, $priority);
+        return $ed->attachFilter($filter_name, $callback, $priority);
     }
 
     public static function filter( $filter_name, $value ) {

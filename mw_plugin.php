@@ -285,7 +285,7 @@ function owa_trackPageView( $params = array() ) {
         // if the page title is not set for some reasons, set it
         // using $wgOut.
         if ( ! $owa->pageview_event->get( 'page_title') ) {
-            $owa->setPageTitle( 'page_title', $wgOut->getPageTitle() );
+            $owa->setPageTitle( $wgOut->getPageTitle() );
         }
 
         /*

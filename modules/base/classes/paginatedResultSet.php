@@ -126,6 +126,8 @@ class owa_paginatedResultSet {
      */
     var $queryParams;
     
+    var $periodInfo;
+    
     var $errors;
 
 

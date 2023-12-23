@@ -33,6 +33,8 @@ require_once(OWA_BASE_DIR.'/owa_view.php');
 
 class owa_reportView extends owa_view {
 
+    var $report_params;
+
     function render($data) {
 
         // Set Page title
@@ -123,7 +125,7 @@ class owa_reportView extends owa_view {
      * Set report period
      *
      * @access public
-     * @param string $period
+     * @param mixed $period
      */
     function setPeriod( $period ) {
 

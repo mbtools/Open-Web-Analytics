@@ -56,7 +56,7 @@ class owa_base {
     /**
      * Module that this class belongs to
      *
-     * @var unknown_type
+     * @var string
      */
     var $module;
 
@@ -72,7 +72,7 @@ class owa_base {
      *
      * @return owa_base
      */
-    function __construct() {
+    function __construct($params = null) {
         owa_coreAPI::profile($this, __FUNCTION__, __LINE__);
         $this->e = owa_coreAPI::errorSingleton();
         $this->c = owa_coreAPI::configSingleton();
@@ -129,7 +129,7 @@ class owa_base {
     /**
      * Sets object attributes
      *
-     * @param unknown_type $array
+     * @param array $array
      */
     function _setObjectValues($array) {
 
@@ -145,7 +145,7 @@ class owa_base {
     /**
      * Sets array attributes
      *
-     * @param unknown_type $array
+     * @param array $array
      */
     function _setArrayValues($array) {
 

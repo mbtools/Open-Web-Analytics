@@ -52,8 +52,6 @@ class owa_sessionBrowserTypes extends owa_metric {
         return $this->db->getAllRows();
 
     }
-
-
 }
 
 

@@ -32,7 +32,7 @@ use PHPMailer\PHPMailer\Exception;
  * @since        owa 1.0.0
  */
 
-class owa_mailer {
+class owa_mailer extends owa_base {
         
     var $mailer;
 

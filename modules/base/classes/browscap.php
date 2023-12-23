@@ -45,7 +45,7 @@ class owa_browscap extends owa_base {
     /**
      * Browscap Record for current User agent
      *
-     * @var unknown_type
+     * @var object
      */
     var $browser;
 

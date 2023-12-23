@@ -1,4 +1,5 @@
 <?php
+// TODO: Replace with standard Memcached 
 //
 // +---------------------------------------------------------------------------+
 // | memcached client, PHP                                                     |
@@ -447,7 +448,7 @@ class memcached
     *
     * @param   array    $keys    Keys to retrieve
     *
-    * @return  array
+    * @return  mixed    Array of values
     * @access  public
     */
    function get_multi ($keys)
@@ -837,7 +838,7 @@ class memcached
     * @param   string   $key     Key to perform it on
     * @param   integer  $amt     Amount to adjust
     *
-    * @return  integer     New value of $key
+    * @return  mixed     New value of $key
     * @access  private
     */
    function _incrdecr ($cmd, $key, $amt=1)

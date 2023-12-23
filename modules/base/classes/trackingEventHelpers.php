@@ -16,6 +16,8 @@ class owa_trackingEventHelpers {
     // 0. filter/set required event properties
     // 0. filter/set derived event properties
     // 0. handler specific logic
+    
+    var $translations = array();
 
     static function getInstance() {
 
@@ -70,11 +72,11 @@ class owa_trackingEventHelpers {
 
                     foreach ($item['callbacks'] as $callback ) {
 
-                        owa_coreAPI::registerFilter( $name, $callback,'', $priority);
+                        owa_coreAPI::registerFilter( $name, $callback, $priority);
                     }
                 } else {
 
-                    owa_coreAPI::registerFilter( $name, $item['callbacks'],'', $priority);
+                    owa_coreAPI::registerFilter( $name, $item['callbacks'], $priority);
                 }
             }
         }
@@ -666,7 +668,7 @@ class owa_trackingEventHelpers {
             
             if ( stripos( $host, $network['domain'] ) !== false ) {
                 
-                owa_coreAPI::debug( 'Found social network: %s', $network['domain'] );
+                owa_coreAPI::debug( sprintf('Found social network: %s', $network['domain']) );
                 
                 return true;
             }

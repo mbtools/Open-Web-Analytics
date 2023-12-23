@@ -64,7 +64,7 @@ class owa_cache {
 	    ];
 	    
 	    
-        $this->warm = owa_coreAPI::implementationFactory( 'object_cache_types', 'memory', $this->cache_conf );
+        $this->warm = owa_coreAPI::implementationFactory( 'object_cache_types', 'memory'); // $this->cache_conf ?
         
         //$this->createColdCache();
         
@@ -79,7 +79,7 @@ class owa_cache {
 	    	
 	    	if ( $cache_type ) {
 	    	
-				$this->cold = owa_coreAPI::implementationFactory( 'object_cache_types', $cache_type, $this->cache_conf );
+				$this->cold = owa_coreAPI::implementationFactory( 'object_cache_types', $cache_type); // $this->cache_conf ?
 				owa_coreAPI::debug( 'CACHE: created cold cache of type: ' . $cache_type );
 			}
 		}

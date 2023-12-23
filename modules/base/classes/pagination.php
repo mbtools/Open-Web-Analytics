@@ -37,6 +37,10 @@ class owa_pagination extends owa_base {
 
     var $total_count;
 
+    var $results_count;
+
+    var $more_pages;
+
     function __construct() {
 
         return;

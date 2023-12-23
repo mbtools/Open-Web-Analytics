@@ -56,7 +56,7 @@ class owa_processEventController extends owa_controller {
     /**
      * Main Control Logic
      *
-     * @return unknown
+     * @return mixed
      */
     function action() {
 

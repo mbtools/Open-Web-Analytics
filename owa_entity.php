@@ -175,7 +175,7 @@ class owa_entity {
     /**
      * Sets object attributes
      *
-     * @param unknown_type $array
+     * @param array $array
      */
     function setProperties($array, $apply_filters = false) {
         
@@ -681,12 +681,7 @@ class owa_entity {
         $db = owa_coreAPI::dbSingleton();
         $status = $db->renameTable($this->getTableName(), $new_table_name);
         
-        if ($status == true):
-            return true;
-        else:
-            return false;
-        endif;
-        return;
+        return $status == true;
     }
     
     function getColumnDefinition($column_name) {

@@ -96,7 +96,7 @@ class owa_caller extends owa_base {
                
         if ( $this->c->isConfigFilePresent() && ! owa_coreAPI::getSetting('base', 'useStaticConfigOnly') && ! defined( 'OWA_INSTALLING' ) )  {
             
-            $this->c->load( $this->c->get( 'base', 'configuration_id' ) );
+            $this->c->load( strval($this->c->get( 'base', 'configuration_id' )) );
         }
         
         // set timezone once config is loaded from DB.
@@ -197,7 +197,7 @@ class owa_caller extends owa_base {
     /**
      * Handles OWA internal page/action requests
      *
-     * @return unknown
+     * @return string
      */
     function handleRequest($caller_params = null, $action = '') {
         

@@ -190,7 +190,7 @@ class owa_update extends owa_base {
      *
      * @return boolean
      */
-    function up() {
+    function up($force = false) {
 
         return false;
     }

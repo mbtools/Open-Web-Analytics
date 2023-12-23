@@ -99,7 +99,7 @@ class owa_serviceUser extends owa_base {
     }
     /**
      * gets allowed capabilities for the user role
-     * @param unknown_type $role
+     * @param mixed $role
      */
     function getCapabilities($role) {
         return owa_coreAPI::getCapabilities( $role );
@@ -188,9 +188,7 @@ class owa_serviceUser extends owa_base {
     function isSiteAccessRequiredForCapability( $capability ) {
 
         $capabilitiesThatRequireSiteAccess = owa_coreAPI::getSetting('base', 'capabilitiesThatRequireSiteAccess');
-        if (is_array($capabilitiesThatRequireSiteAccess) && in_array($capability, $capabilitiesThatRequireSiteAccess)) {
-            return true;
-        }
+        return is_array($capabilitiesThatRequireSiteAccess) && in_array($capability, $capabilitiesThatRequireSiteAccess);
     }
 
     /**
@@ -218,6 +216,7 @@ class owa_serviceUser extends owa_base {
             return true;
         } else {
             owa_coreAPI::debug("Site ID: $siteId is not in accessible list for this user.");
+            return false;
         }
     }
 

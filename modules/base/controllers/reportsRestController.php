@@ -6,19 +6,20 @@ require_once(OWA_BASE_CLASS_DIR.'resultSetManager.php');
 /**
  * Report REST Controller.
  *
- * @param report_name	string		'clickstream'
- * @param metrics	 	string		'foo,bar'
- * @param dimensions 	string		'dim1,dim2,dim3'
- * @param period	 	string		'today'
- * @param startDate		string		'yyyymmdd'
- * @param endDate		string		'yyyymmdd'
- * @param startTime		timestamp	timestamp
- * @param endTime		timestamp	timestamp
- * @param constraints	string		'con1=foo, con2=bar'
- * @param page => 		int			1
- * @param offset	 	int			0
- * @param limit			int			10
- * @param sort			string		'dim1,dim2'
+ * @param string		
+
+ * @param string metrics	 	'foo,bar'
+ * @param string dimensions 	'dim1,dim2,dim3'
+ * @param string period	 	'today'
+ * @param string startDate		'yyyymmdd'
+ * @param string endDate		'yyyymmdd'
+ * @param string startTime		timestamp
+ * @param string endTime		timestamp
+ * @param string constraints	'con1=foo, con2=bar'
+ * @param int page => 		1
+ * @param int offset	 	0
+ * @param int limit			10
+ * @param string sort			'dim1,dim2'
  */
 class owa_reportsRestController extends owa_reportController {
 	
@@ -123,7 +124,7 @@ class owa_reportsRestController extends owa_reportController {
 	/**
      * Generates a data result set using metrics and dimension
      *
-     * @return paginatedResultSet obj
+     * @return mixed paginatedResultSet 
      */
     function getResultSet() {
 

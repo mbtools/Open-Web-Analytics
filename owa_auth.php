@@ -34,7 +34,7 @@ class owa_auth extends owa_base {
     /**
      * User object
      *
-     * @var unknown_type
+     * @var object
      */
     var $u;
 
@@ -73,6 +73,8 @@ class owa_auth extends owa_base {
     
     var $auth_method;
 
+    var $eq;
+    
     /**
      * Auth class Singleton
      *
@@ -124,7 +126,7 @@ class owa_auth extends owa_base {
         } elseif (owa_coreAPI::getRequestParam('pk') && owa_coreAPI::getStateParam('u')) {
             // auth user by temporary passkey. used in forgot password situations
             $this->setAuthMethod( 'temp_key');
-            $ret = $this->authenticateUserByUrlPasskey(owa_coreAPI::getRequestParam('pk'));
+            $ret = $this->authenticateUserByUrlPasskey(owa_coreAPI::getStateParam('u'), owa_coreAPI::getRequestParam('pk'));
              owa_coreAPI::debug('User authenticated via temporary passkey.');
     
         } elseif (owa_coreAPI::getRequestParam('user_id') && owa_coreAPI::getRequestParam('password')) {
@@ -257,8 +259,8 @@ class owa_auth extends owa_base {
     /**
      * Looks up user by temporary Passkey Column in db
      *
-     * @param unknown_type $key
-     * @return unknown
+     * @param mixed $key
+     * @return boolean
      */
     function authenticateUserTempPasskey( $key ) {
 
@@ -289,8 +291,9 @@ class owa_auth extends owa_base {
     /**
      * Authenticates user by a passkey
      *
-     * @param unknown_type $key
-     * @return unknown
+     * @param string $user_id
+     * @param string $passkey
+     * @return boolean
      */
     function authenticateUserByUrlPasskey($user_id, $passkey) {
 
@@ -334,7 +337,7 @@ class owa_auth extends owa_base {
         $this->u = owa_coreAPI::entityFactory('base.user');
         $this->u->getByColumn('email_address', $email_address);
 
-        $id = $u->get('id');
+        $id = $this->u->get('id');
 
         if (!empty($id)):
 
@@ -384,7 +387,7 @@ class owa_auth extends owa_base {
 
     /**
      * Removes credentials
-     * @return boolean
+     * @return void
      */
     function deleteCredentials() {
 

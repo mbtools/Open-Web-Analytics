@@ -73,6 +73,14 @@ class owa_metric extends owa_base {
      * @var object
      */
     var $db;
+
+    /**
+     * Entity Object
+     *
+     * @var object
+     */
+    var $entity;
+    
     
     var $_default_offset = 0;
     
@@ -92,14 +100,23 @@ class owa_metric extends owa_base {
     
     var $column;
     
+    var $all_columns;
+
     var $is_calculated = false;
     
     var $is_aggregate;
     
     var $data_type;
     
+    /**
+     * Metric name
+     *
+     * @var string
+     */
     var $name;
     
+    var $type;
+
     var $supported_data_types = array('percentage', 'decimal', 'integer', 'url', 'yyyymmdd', 'timestamp', 'string', 'currency');
         
     function __construct($params = array()) {
@@ -128,7 +145,7 @@ class owa_metric extends owa_base {
     /**
      * Sets an individual label
      * return the key so that it can be nested
-     * @return $key string
+     * @return string $key 
      */
     function addLabel($key, $label) {
         
@@ -148,11 +165,11 @@ class owa_metric extends owa_base {
     /**
      * Sets an individual label
      * return the key so that it can be nested
-     * @return $key string
+     * @return array 
      */
     function setLabel($label) {
         
-        $this->labels[$this->getName()] = $label;
+        return $this->labels[$this->getName()] = $label;
         
     }
     
@@ -205,21 +222,23 @@ class owa_metric extends owa_base {
     
         return $this->params['period'];
     }
-    
+    */
+
     function getOrder() {
     
         if (array_key_exists('order', $this->params)) {
             return $this->params['order'];
         }
     }
-    
+
+    /*
     function getLimit() {
         
         return $this->limit;
         
     }
-    
     */
+
     function setEntity($name) {
         
         $this->entity = owa_coreAPI::entityFactory($name);

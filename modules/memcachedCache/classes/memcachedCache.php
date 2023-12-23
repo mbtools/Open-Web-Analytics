@@ -61,8 +61,6 @@ class owa_memcachedCache extends owa_cacheType {
                 'compress_threshold' => 10240,
                 'persistant' => $persistant
            ));
-
-        return parent::__construct();
     }
 
     function makeKey( $values ) {

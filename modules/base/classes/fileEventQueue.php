@@ -50,6 +50,7 @@ class owa_fileEventQueue extends owa_eventQueue {
     var $rotation_size;
     var $rotation_interval = 3600;
     var $currentProcessingFileHandle;
+    var $lock_file;
 
     function __construct( $map = array() ) {
 

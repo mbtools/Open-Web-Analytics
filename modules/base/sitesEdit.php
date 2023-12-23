@@ -61,7 +61,7 @@ class owa_sitesEditController extends owa_adminController {
 
         $site = owa_coreAPI::entityFactory('base.site');
         if (! $this->getParam('siteId')) {
-            throw exception('No siteId passed on request');
+            throw new Exception('No siteId passed on request');
         }
         $site->load( $site->generateId( $this->getParam('siteId') ) );
         $site->set('name', $this->getParam( 'name' ) );

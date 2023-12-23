@@ -35,6 +35,7 @@ if (!class_exists('MaxMind\Db\Reader\Util')) {
 }
 
 use MaxMind\Db\Reader;
+use GeoIp2\WebService\Client;
 
 
 if ( ! defined( 'OWA_MAXMIND_DATA_DIR' ) ) {
@@ -59,7 +60,7 @@ class owa_maxmind extends owa_location {
     /**
      * URL template for REST based web service
      *
-     * @var unknown_type
+     * @var string
      */
     var $ws_url = '';
     var $db_file_dir;
@@ -70,7 +71,7 @@ class owa_maxmind extends owa_location {
     /**
      * Constructor
      *
-     * @return owa_hostip
+     * @return owa_maxmind
      */
     function __construct() {
 

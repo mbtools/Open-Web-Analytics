@@ -288,20 +288,18 @@ class owa_lib {
                             owa_lib::setDaySuffix($params['day']),
                             $params['year']
                         );
-                break;
 
             case "month":
                 return sprintf("%s %s",
                             owa_lib::get_month_label($params['month']),
                             $params['year']
                         );
-                break;
 
             case "year":
                 return sprintf("%s",
                             $params['year']
                         );
-                break;
+
             case "date_range":
                 return sprintf("%s, %d%s %s - %s, %d%s %s",
                             owa_lib::get_month_label($params['month']),
@@ -313,7 +311,6 @@ class owa_lib {
                             owa_lib::setDaySuffix($params['day2']),
                             $params['year2']
                         );
-                break;
         }
 
         return false;
@@ -370,8 +367,8 @@ class owa_lib {
     /**
      * Gets label for a particular reporting period
      *
-     * @param unknown_type $period
-     * @return unknown
+     * @param string $period
+     * @return string
      */
     public static function get_period_label($period) {
 
@@ -550,6 +547,8 @@ class owa_lib {
         $new_query_params = array();
 
         //Load params passed by caller
+        // TODO: $this->caller_params is not defined
+        /*
         if (!empty($this->caller_params)):
             foreach ($this->caller_params as $name => $value) {
                 if (!empty($value)):
@@ -557,6 +556,7 @@ class owa_lib {
                 endif;
             }
         endif;
+        */
 
         // Load overrides
         if (!empty($query_params)):
@@ -600,7 +600,6 @@ class owa_lib {
 
     public static function rekeyArray($array, $new_keys) {
 
-        $new_keys = $new_keys;
         $new_array = array();
         foreach ($array as $k => $v) {
 
@@ -648,9 +647,9 @@ class owa_lib {
     /**
      * module specific require method
      *
-     * @param unknown_type $module
-     * @param unknown_type $file
-     * @return unknown
+     * @param string $module
+     * @param string $file
+     * @return mixed
      * @deprecated
      */
     public static function moduleRequireOnce($module, $file) {
@@ -661,10 +660,10 @@ class owa_lib {
     /**
      * module specific factory
      *
-     * @param unknown_type $modulefile
-     * @param unknown_type $class_suffix
-     * @param unknown_type $params
-     * @return unknown
+     * @param string $modulefile
+     * @param string $class_suffix
+     * @param array $params
+     * @return object
      * @deprecated
      */
     public static function moduleFactory($modulefile, $class_suffix = null, $params = '') {
@@ -686,7 +685,7 @@ class owa_lib {
     /**
      * redirects borwser to a particular view
      *
-     * @param unknown_type $data
+     * @param array $data
      */
     public static function redirectToView($data) {
         //print_r($data);
@@ -740,12 +739,14 @@ class owa_lib {
 
             if ( owa_coreAPI::getSetting('base', 'use_64bit_hash') && PHP_INT_MAX == '9223372036854775807') {
                 // make 64 bit ID from partial sha1
-                return (string) (int) hexdec( substr( sha1( strtolower( $string ) ), 0, 16 ) );
+                return (int) hexdec( substr( sha1( strtolower( $string ) ), 0, 16 ) );
             } else {
                 // make 32 bit ID from crc32
                 return crc32( strtolower( $string ) );
             }
         }
+
+        return false;
     }
 
     /**
@@ -804,12 +805,12 @@ class owa_lib {
             if (!empty($where)):
                 return $where;
             else:
-                return;
+                return '';
             endif;
 
         else:
 
-            return;
+            return '';
 
         endif;
 

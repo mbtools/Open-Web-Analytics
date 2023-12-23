@@ -44,8 +44,6 @@ class owa_state {
     }
 
     function __destruct() {
-
-        return false;
     }
 
     function registerStore( $name, $expiration, $length = '', $format = 'json', $type = 'cookie', $cdh = null ) {
@@ -223,8 +221,6 @@ class owa_state {
             } elseif ( strpos( $value, ":" ) ) {
                 $value = json_decode($value);
                 $value = (array) $value;
-            } else {
-                $value = $value;
             }
 
             if ( in_array( $store, $this->stores_with_cdh ) ) {

@@ -46,9 +46,9 @@ class owa_error {
     /**
      * logger instance
      *
-     * @var array
+     * @var object
      */
-    var $loggger;
+    var $logger;
     
     /**
      * Buffered Msgs

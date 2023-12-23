@@ -63,7 +63,7 @@ class owa_location {
     /**
      * Location of concrete class plugins
      *
-     * @var unknown_type
+     * @var string
      */
     var $plugin_dir;
 

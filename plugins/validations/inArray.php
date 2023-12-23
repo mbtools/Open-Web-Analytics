@@ -44,7 +44,7 @@
 
         if ( empty( $error ) ) {
 	        
-            $error = $this->setErrorMessage( sprintf(
+            $this->setErrorMessage( sprintf(
             	
             	'"%s" is not not a possible value. Choices are: %s',
             	$value,

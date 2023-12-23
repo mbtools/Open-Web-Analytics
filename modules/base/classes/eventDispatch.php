@@ -128,7 +128,6 @@ class owa_eventDispatch {
      *
      * @param     $filter_name    string
      * @param    $observer    mixed can be a function name or function array
-     * @return bool
      */
 
     function attachFilter($filter_name, $observer, $priority = 10) {
@@ -195,10 +194,9 @@ class owa_eventDispatch {
      *
      * @param     $event_type    string
      * @param    $event    array
-     * @return bool
      */
 
-    function notifyUntill() {
+    function notifyUntil($event_type, $event) {
         owa_coreAPI::debug("Notifying Until listener for $event_type answers");
     }
 

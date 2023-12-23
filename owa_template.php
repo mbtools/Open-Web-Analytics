@@ -59,6 +59,8 @@ class owa_template extends Template {
 
     var $period;
 
+    var $time_now;
+    
     /**
      * Params passed by calling caller
      *
@@ -195,8 +197,8 @@ class owa_template extends Template {
     /**
      * Chooses the right icon based on browser type
      *
-     * @param unknown_type $browser_type
-     * @return unknown
+     * @param string $browser_type
+     * @return string
      */
     function choose_browser_icon($browser_type) {
 		
@@ -289,7 +291,7 @@ class owa_template extends Template {
             
             if ( $nav ) {
                 
-                $items = $this->makeNavigation( $nav, $menu_name . '_menu', $class );
+                $items = $this->makeNavigation( $nav, $menu_name . '_menu', $options['class'] );
                 
                 $menu = sprintf( '<%s class="%s">%s</%s>', $options['container_element'], $options['class'], $items, $options['container_element'] );
                 

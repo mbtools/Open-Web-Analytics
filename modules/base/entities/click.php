@@ -37,7 +37,7 @@ class owa_click extends owa_factTable {
         $this->setTableName('click');
 
         // set common fact table columns
-        $parent_columns = parent::__construct();
+        $parent_columns = parent::__construct()->getColumns();
 
         foreach ($parent_columns as $pcolumn) {
 

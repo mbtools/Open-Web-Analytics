@@ -101,7 +101,7 @@ class owa_resultSetManager extends owa_base {
     var $pagination;
     var $resolution = 'day';
     var $timePeriod;
-    
+    var $all_columns = array();
 
     function __construct($db = '') {
 
@@ -303,6 +303,11 @@ if ( ! in_array($item['name'], $this->allMetrics) ) {
         $this->segment = array('metrics' => $metrics, 'dimensions' => $dimensions);
     }
 
+    /**
+     * Returns segment 
+     *
+     * @return array
+     */
     function getSegment() {
 
         return $this->segment;
@@ -1015,9 +1020,9 @@ if ( ! in_array($item['name'], $this->allMetrics) ) {
      * return the key so that it can be nested
      * @return $key string
      */
-    function setLabel($label) {
+    function setLabel($name,$label) {
 
-        $this->labels[$this->getName()] = $label;
+        $this->labels[$name] = $label;
     }
 
     /**
@@ -1197,6 +1202,8 @@ if ( ! in_array($item['name'], $this->allMetrics) ) {
                     return $this->addCalculatedMetric($m);
                 }
 
+                // TODO: checkForFactTableRelation does not exist
+                /*
                 if ($this->checkForFactTableRelation($m)) {
 
                     $this->metrics[$metric_name] = $m;
@@ -1206,6 +1213,7 @@ if ( ! in_array($item['name'], $this->allMetrics) ) {
 
                     $ret = true;
                 }
+                */
 
             } else {
                 $this->addError("$metric_name is not a metric.");
@@ -1466,7 +1474,7 @@ if ( ! in_array($item['name'], $this->allMetrics) ) {
    	/**
      * Generates a reporting result set using metrics and dimension
      *
-     * @return paginatedResultSet obj
+     * @return object paginatedResultSet 
      */
     function getResults() {
 		
@@ -1559,7 +1567,7 @@ if ( ! in_array($item['name'], $this->allMetrics) ) {
   	/**
      * Generates a data result set using DB object directly
      *
-     * @return paginatedResultSet obj
+     * @return object paginatedResultSet
      */
     function queryResults() {
 
