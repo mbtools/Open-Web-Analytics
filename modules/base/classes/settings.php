@@ -530,9 +530,9 @@
 	 	 
 	 	 } else {
 		 	 
-		 	 if ( defined( 'PUBLIC_URL' ) ) {
+		 	 if ( defined( 'OWA_PUBLIC_URL' ) ) {
 			 	 
-			 	 $parts = parse_url( PUBLIC_URL );
+			 	 $parts = parse_url( OWA_PUBLIC_URL );
 			 	 $mailer_domain = $parts['host'];
 		 	 }
 	 	 }

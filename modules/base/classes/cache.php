@@ -41,6 +41,14 @@ class owa_cache {
     var $collection_expiration_periods = [];
     var $e;
     var $warm;
+    
+    /**
+     * Constructor
+     * 
+     * Takes cache directory as param
+     *
+     * @param object 
+     */
     var $cold;
     var $cache_conf;
 

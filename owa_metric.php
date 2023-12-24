@@ -74,14 +74,6 @@ class owa_metric extends owa_base {
      */
     var $db;
 
-    /**
-     * Entity Object
-     *
-     * @var object
-     */
-    var $entity;
-    
-    
     var $_default_offset = 0;
     
     var $pagination;
@@ -100,8 +92,6 @@ class owa_metric extends owa_base {
     
     var $column;
     
-    var $all_columns;
-
     var $is_calculated = false;
     
     var $is_aggregate;
@@ -115,10 +105,10 @@ class owa_metric extends owa_base {
      */
     var $name;
     
-    var $type;
-
     var $supported_data_types = array('percentage', 'decimal', 'integer', 'url', 'yyyymmdd', 'timestamp', 'string', 'currency');
-        
+
+    var $type, $entity, $all_columns;
+
     function __construct($params = array()) {
         
         if (!empty($params)) {

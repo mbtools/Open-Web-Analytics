@@ -47,6 +47,12 @@ class owa_service extends owa_base {
     var $metrics = array();
     var $dimensions = array();
     var $denormalizedDimensions = array();
+    
+    /**
+     * browscap object
+     * 
+     * @var object
+     */
     var $browscap;
     var $geolocation;
     var $formatters = array();
