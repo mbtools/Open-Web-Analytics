@@ -32,10 +32,6 @@ class owa_configuration extends owa_entity {
 
     function __construct() {
 
-        // DTD constants might not be defined yet (e.g. during installation).
-        // $dataTypeID = (defined('OWA_DTD_BIGINT') ? OWA_DTD_BIGINT : 'BIGINT');
-        // $dataTypeSettings = (defined('OWA_DTD_BLOB') ? OWA_DTD_BLOB : 'BLOB');
-
         $this->setTableName('configuration');
         $this->properties['id'] = new owa_dbColumn;
         $this->properties['id']->setDataType(OWA_DTD_BIGINT);

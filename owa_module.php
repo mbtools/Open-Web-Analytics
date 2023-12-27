@@ -736,6 +736,8 @@ abstract class owa_module {
 
     function registerMetric($metric_name, $classes, $params = array(), $label = '', $description = '', $group = '') {
 
+        owa_coreAPI::debug('register metric: ' . $metric_name);
+
         if ( ! $label ) {
             $label = $metric_name;
         }
